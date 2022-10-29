@@ -34,7 +34,7 @@ export default function Home() {
     </div>
   );
 }
-
+//df
 const BackgroundImg = styled.image`
   display: flex;
   position: absolute;
