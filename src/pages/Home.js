@@ -20,13 +20,15 @@ export default function Home() {
       <StWrap>
         <LoginButton
 
-          type='button'
+          type="button"
+
           onClick={() => {
             setModalOpen(!modalOpen);
           }}
         >
           로그인
           {modalOpen && (
+
             <Login
               visible={onOpenModal}
               closable={true}
@@ -34,7 +36,7 @@ export default function Home() {
               onClose={onCloseModal}
             ></Login>
           )}
-
+          
         </LoginButton>
         <StSignUpBox>
           <StSignUpBtn
@@ -62,6 +64,7 @@ const StCoverImg = styled.img`
 
 const StSignUpBox = styled.div`
   height: auto;
+  width: 100%;
   margin-top: 628px;
   position: absolute;
   display: flex;
@@ -76,6 +79,7 @@ const StSignUpBtn = styled.button`
   font-size: 20px;
   color: white;
   font-weight: bold;
+  margin-right: 50px;
   border: 1px solid #fd5547;
   border-radius: 25px;
   cursor: pointer;
@@ -91,7 +95,7 @@ const LoginButton = styled.button`
   border-radius: 30px;
   background-color: white;
   position: absolute;
-  margin-left: 1768px;
+  margin-left: 1723px;
   margin-top: 20px;
   color: black;
   font-size: x-large;
