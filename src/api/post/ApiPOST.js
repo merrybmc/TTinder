@@ -11,12 +11,16 @@ const api = axios.create({
 
 // 이메일 코드 전송
 export async function RequestEmailSend(email) {
-  const { data } = await api.post('', email);
+  const { data } = await api.post('/emailConfirm', email);
   return data;
 }
 
 // 회원가입
 export async function RequestSignUp(UserInfo) {
-  const { data } = await api.post('', UserInfo);
+  const { data } = await api.post('/signup', UserInfo);
+  
+// 로그인
+export async function EmailLoginData(EmailData) {
+  const { data } = await api.post("/signin", EmailData);
   return data;
 }

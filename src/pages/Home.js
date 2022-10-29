@@ -1,3 +1,4 @@
+
 import HOME from './sources/home.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -18,20 +19,29 @@ export default function Home() {
     <>
       <StWrap>
         <LoginButton
+
           type="button"
+
           onClick={() => {
             setModalOpen(!modalOpen);
           }}
         >
           로그인
           {modalOpen && (
-            <Login visible={onOpenModal} closable={true} maskClosable={true} onClose={onCloseModal}></Login>
+
+            <Login
+              visible={onOpenModal}
+              closable={true}
+              maskClosable={true}
+              onClose={onCloseModal}
+            ></Login>
           )}
+          
         </LoginButton>
         <StSignUpBox>
           <StSignUpBtn
             onClick={() => {
-              navigate('/signup');
+              navigate("/signup");
             }}
           >
             계정 만들기
