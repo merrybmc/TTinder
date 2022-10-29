@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-
 import HOME from './sources/home.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <StWrap>
         <StSignUpBox>
-          <StSignUpBtn>계정 만들기</StSignUpBtn>
+          <StSignUpBtn onClick={() => navigate('/signup')}>계정 만들기</StSignUpBtn>
         </StSignUpBox>
         <StCoverImg src={HOME} />
       </StWrap>
