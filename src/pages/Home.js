@@ -21,7 +21,7 @@ export default function Home() {
           setModalOpen(!modalOpen);
         }}
       >
-        로그인
+        로그인 ㅋㅋㅋ
         {modalOpen && (
           <Login
             visible={onOpenModal}
@@ -52,5 +52,4 @@ const LoginButton = styled.button`
   color: black;
   font-size: x-large;
   font-family: sans-serif;
-
 `;
