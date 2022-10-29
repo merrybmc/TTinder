@@ -6,12 +6,7 @@ import Login from "./Login";
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const onOpenModal = () => {
-    setModalOpen(true);
-  };
-  const onCloseModal = () => {
-    setModalOpen(false);
-  };
+
   return (
 
     <>
