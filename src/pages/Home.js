@@ -1,8 +1,9 @@
-import HOME from "./sources/home.png";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import Login from "./Login";
-import { useState } from "react";
+
+import HOME from './sources/home.png';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import Login from './Login';
+import { useState } from 'react';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ export default function Home() {
     <>
       <StWrap>
         <LoginButton
-          type="button"
+
+          type='button'
           onClick={() => {
             setModalOpen(!modalOpen);
           }}
@@ -32,6 +34,7 @@ export default function Home() {
               onClose={onCloseModal}
             ></Login>
           )}
+
         </LoginButton>
         <StSignUpBox>
           <StSignUpBtn
