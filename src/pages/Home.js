@@ -82,15 +82,19 @@ const StSignUpBtn = styled.button`
   }
 `;
 const LoginButton = styled.button`
-  width: 120px;
+  width: 123px;
   height: 46px;
   border: none;
   border-radius: 30px;
-  background-color: red;
-  position: relative;
-  /* bottom: 955px;
-  margin-left: 1726px; */
+  background-color: white;
+  position: absolute;
+  margin-left: 1768px;
+  margin-top: 20px;
   color: black;
   font-size: x-large;
   font-family: sans-serif;
+  cursor: pointer;
+  &:hover {
+    background-color: #d9d9da;
+  }
 `;
