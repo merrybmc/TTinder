@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <StWrap>
         <StSignUpBox>
-          ddd<StSignUpBtn>계정 만들기</StSignUpBtn>
+          <StSignUpBtn>계정 만들기</StSignUpBtn>
         </StSignUpBox>
         <StCoverImg src={HOME} />
       </StWrap>
