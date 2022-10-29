@@ -1,52 +1,55 @@
-import HOME from './sources/home.png';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import HOME from "./sources/home.png";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import Login from "./Login";
+import { useState } from "react";
 
 export default function Home() {
   const navigate = useNavigate();
-  return (
+  const [modalOpen, setModalOpen] = useState(false);
+  const onOpenModal = () => {
+    setModalOpen(true);
+  };
+  const onCloseModal = () => {
+    setModalOpen(false);
+  };
 
-     
+  return (
     <>
       <StWrap>
+        <LoginButton
+          type="button"
+          onClick={() => {
+            setModalOpen(!modalOpen);
+          }}
+        >
+          로그인
+          {modalOpen && (
+            <Login
+              visible={onOpenModal}
+              closable={true}
+              maskClosable={true}
+              onClose={onCloseModal}
+            ></Login>
+          )}
+        </LoginButton>
         <StSignUpBox>
-         <LoginButton
-        type="button"
-        onClick={() => {
-          setModalOpen(!modalOpen);
-        }}
-      >
-        로그인
-        {modalOpen && (
-          <Login
-            visible={onOpenModal}
-            closable={true}
-            maskClosable={true}
-            onClose={onCloseModal}
-          ></Login>
-        )}
-      </LoginButton>
           <StSignUpBtn
             onClick={() => {
-              navigate('/signup');
+              navigate("/signup");
             }}
           >
             계정 만들기
           </StSignUpBtn>
         </StSignUpBox>
         <StCoverImg src={HOME} />
-        
       </StWrap>
-      
-      
     </>
-
   );
 }
 
 const StWrap = styled.div`
   position: relative;
-
 `;
 
 const StCoverImg = styled.img`
@@ -77,4 +80,17 @@ const StSignUpBtn = styled.button`
     background-color: #d74f3b;
     border: 1px solid #d74f3b;
   }
+`;
+const LoginButton = styled.button`
+  width: 120px;
+  height: 46px;
+  border: none;
+  border-radius: 30px;
+  background-color: red;
+  position: relative;
+  /* bottom: 955px;
+  margin-left: 1726px; */
+  color: black;
+  font-size: x-large;
+  font-family: sans-serif;
 `;
