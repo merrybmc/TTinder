@@ -4,13 +4,11 @@ import { useState } from "react";
 import Login from "./Login";
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-
+// zzz
   return (
-
     <>
       <StWrap>
+        ddd
         <StSignUpBox>
           <StSignUpBtn>계정 만들기</StSignUpBtn>
         </StSignUpBox>
