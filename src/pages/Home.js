@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <StWrap>
         <StSignUpBox>
-          ddd<StSignUpBtn>계정 만들기</StSignUpBtn>
+          <StSignUpBtn>계정 만들기</StSignUpBtn>
         </StSignUpBox>
         <StCoverImg src={HOME} />
       </StWrap>
@@ -25,8 +25,9 @@ const StCoverImg = styled.img`
 `;
 
 const StSignUpBox = styled.div`
+  width: 100%;
   height: auto;
-  margin-top: 617px;
+  margin-top: 628px;
   position: absolute;
   display: flex;
   align-items: center;
@@ -39,6 +40,7 @@ const StSignUpBtn = styled.button`
   background-color: #fd5547;
   font-size: 20px;
   color: white;
+  margin-right: 40px;
   font-weight: bold;
   border: 1px solid #fd5547;
   border-radius: 25px;
