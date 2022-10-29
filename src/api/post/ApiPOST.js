@@ -18,9 +18,10 @@ export async function RequestEmailSend(email) {
 // 회원가입
 export async function RequestSignUp(UserInfo) {
   const { data } = await api.post('/signup', UserInfo);
-  
+}
+
 // 로그인
 export async function EmailLoginData(EmailData) {
-  const { data } = await api.post("/signin", EmailData);
+  const { data } = await api.post('/signin', EmailData);
   return data;
 }
