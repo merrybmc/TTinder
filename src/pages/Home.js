@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <>
       <StWrap>
-        ddd
         <StSignUpBox>
           <StSignUpBtn>계정 만들기</StSignUpBtn>
         </StSignUpBox>
