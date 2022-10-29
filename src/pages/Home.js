@@ -7,6 +7,7 @@ export default function Home() {
   return (
     <>
       <StWrap>
+        kkkk
         <StSignUpBox>
           <StSignUpBtn onClick={() => navigate('/signup')}>계정 만들기</StSignUpBtn>
         </StSignUpBox>
