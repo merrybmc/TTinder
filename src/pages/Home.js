@@ -5,9 +5,27 @@ import { useNavigate } from 'react-router-dom';
 export default function Home() {
   const navigate = useNavigate();
   return (
+
+     
     <>
       <StWrap>
         <StSignUpBox>
+         <LoginButton
+        type="button"
+        onClick={() => {
+          setModalOpen(!modalOpen);
+        }}
+      >
+        로그인
+        {modalOpen && (
+          <Login
+            visible={onOpenModal}
+            closable={true}
+            maskClosable={true}
+            onClose={onCloseModal}
+          ></Login>
+        )}
+      </LoginButton>
           <StSignUpBtn
             onClick={() => {
               navigate('/signup');
@@ -17,13 +35,18 @@ export default function Home() {
           </StSignUpBtn>
         </StSignUpBox>
         <StCoverImg src={HOME} />
+        
       </StWrap>
+      
+      
     </>
+
   );
 }
 
 const StWrap = styled.div`
   position: relative;
+
 `;
 
 const StCoverImg = styled.img`
