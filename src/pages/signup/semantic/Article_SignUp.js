@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { RequestEmailSend, RequestSignUp } from '../../../api/post/ApiPOST';
-import SignUp from '../SignUp';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp_Article() {
   // Router navigate
@@ -14,6 +13,9 @@ export default function SignUp_Article() {
 
   // useState 코드 담기
   const [emailCode, setEmailCode] = useState();
+
+  // useState 코드 담기
+  const [myEmailCode, setMyEmailCode] = useState();
 
   // useState 비밀번호 확인 담기
   const [passwordCheck, setPasswordCheck] = useState();
@@ -46,7 +48,7 @@ export default function SignUp_Article() {
   // onChange 코드 입력
   const onChangeCode = (event) => {
     const value = event.target.value;
-    setEmailCode(value);
+    setMyEmailCode(value);
   };
 
   // onChange 패스워드 입력
@@ -61,7 +63,16 @@ export default function SignUp_Article() {
     setPasswordCheck(value);
   };
 
-  const { mutate: MutateEmailSend } = useMutation(RequestEmailSend);
+  const { mutate: MutateEmailSend } = useMutation(RequestEmailSend, {
+    onSuccess: (temp) => {
+      setCodeSendBtn(1);
+      setEmailCode(temp.data.code);
+    },
+    onError: (temp) => {
+      setErrorInputEmail(temp.response.data.error.message);
+    },
+  });
+
   const { mutate: MutateSignUp } = useMutation(RequestSignUp, {
     onSuccess: () => {
       alert('회원가입 완료');
@@ -78,7 +89,6 @@ export default function SignUp_Article() {
     // 이메일 유효성 검사
     if (myEmail.includes('@') === true) {
       setErrorInputEmail('');
-      setCodeSendBtn(1);
       MutateEmailSend(emailPassword);
     } else {
       setErrorInputEmail('이메일을 잘못 입력하셨습니다.');
@@ -87,10 +97,9 @@ export default function SignUp_Article() {
 
   // 코드 인증 버튼
   const onCodeCertify = () => {
-    if (emailCode === '1') {
+    if (emailCode === myEmailCode) {
       setCodeCertifyBtn(1);
       setErrorInputCertify('');
-      MutateSignUp(emailPassword);
     } else {
       setErrorInputCertify('코드를 잘못 입력하셨습니다.');
     }
@@ -100,9 +109,8 @@ export default function SignUp_Article() {
   const onSignUp = () => {
     if (emailPassword.password === passwordCheck) {
       setErrorPasswordCheck('');
+      MutateSignUp(emailPassword);
       console.log(emailPassword);
-      navigate('/');
-      alert('회원가입 완료');
     } else {
       setErrorPasswordCheck('비밀번호를 잘못 입력하셨습니다.');
     }
@@ -132,7 +140,7 @@ export default function SignUp_Article() {
         <>
           <StEmailCodeP>코드 입력</StEmailCodeP>
           <StEmailCodeInputBox>
-            <StEmailCodeInput type="number" onChange={onChangeCode} placeholder="코드 입력..." />
+            <StEmailCodeInput type="text" onChange={onChangeCode} placeholder="코드 입력..." />
 
             {codeCertifyBtn === 0 ? (
               <StEmailCodeBtn
@@ -155,7 +163,7 @@ export default function SignUp_Article() {
           <StEmailCodeP>비밀번호 입력</StEmailCodeP>
           <StEmailCodeInputBox>
             <StEmailCodeInput
-              type="number"
+              type="password"
               name="password"
               onChange={onChangePassword}
               placeholder="비밀번호 입력..."
@@ -164,7 +172,7 @@ export default function SignUp_Article() {
 
           <StEmailCodeP>비밀번호 확인</StEmailCodeP>
           <StEmailCodeInputBox>
-            <StEmailCodeInput type="number" onChange={onChangePasswordCheck} placeholder="비밀번호 입력..." />
+            <StEmailCodeInput type="password" onChange={onChangePasswordCheck} placeholder="비밀번호 입력..." />
           </StEmailCodeInputBox>
 
           {SignUpBtn === 0 ? (
