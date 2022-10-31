@@ -1,19 +1,13 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { SlClose } from "react-icons/sl";
-import { useMutation } from "@tanstack/react-query";
-import { EmailLoginData, axiosIns } from "../api/post/ApiPOST";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { SlClose } from 'react-icons/sl';
+import { useMutation } from '@tanstack/react-query';
+import { EmailLoginData, axiosIns } from '../api/post/ApiPOST';
+import { useNavigate } from 'react-router-dom';
 
-export default function Login({
-  className,
-  onClose,
-  maskClosable,
-  closable,
-  visible,
-}) {
-  const [signInData, setSignInData] = useState("");
+export default function Login({ className, onClose, maskClosable, closable, visible }) {
+  const [signInData, setSignInData] = useState('');
   const navigate = useNavigate();
 
   const onMaskClick = (e) => {
@@ -57,40 +51,19 @@ export default function Login({
   return (
     <>
       <ModalOverlay visible={visible} />
-      <ModalWrapper
-        className={className}
-        onClick={maskClosable ? onMaskClick : null}
-        tabIndex="-1"
-        visible={visible}
-      >
-        <ModalInner
-          tabIndex="0"
-          className="modal-inner"
-          onClick={(e) => e.stopPropagation()}
-        >
+      <ModalWrapper className={className} onClick={maskClosable ? onMaskClick : null} tabIndex="-1" visible={visible}>
+        <ModalInner tabIndex="0" className="modal-inner" onClick={(e) => e.stopPropagation()}>
           {closable && (
             <>
-              <SlClose
-                type="button"
-                className="modal-close"
-                size="auto"
-                color="gray"
-                onClick={onCloseEvent}
-              />
+              <SlClose type="button" className="modal-close" size="auto" color="gray" onClick={onCloseEvent} />
               <StLogo>logo</StLogo>
               <StWelCome>계정만들기</StWelCome>
               <StInfo>
-                로그인하면 TTinder 이용약관에 동의하는 것으로 간주됩니다.
-                TTinder의 회원 정보 처리 방식은 개인정보 처리방침 및 쿠키
-                정책에서 확인해 보세요.
+                로그인하면 TTinder 이용약관에 동의하는 것으로 간주됩니다. TTinder의 회원 정보 처리 방식은 개인정보
+                처리방침 및 쿠키 정책에서 확인해 보세요.
               </StInfo>
               <StLoginBox>
-                <StInPutStyle
-                  type="text"
-                  placeholder="이메일"
-                  name="email"
-                  onChange={onChangeHandler}
-                ></StInPutStyle>
+                <StInPutStyle type="text" placeholder="이메일" name="email" onChange={onChangeHandler}></StInPutStyle>
                 <StInPutStyle
                   type="text"
                   placeholder="비밀번호"
