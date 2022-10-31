@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
 
 export default function InformationInput() {
-  return <div>dddadadasd</div>;
+  return <div></div>;
 }

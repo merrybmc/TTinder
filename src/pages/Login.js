@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { SlClose } from "react-icons/sl";
-import { useMutation } from "@tanstack/react-query";
-import { EmailLoginData, axiosIns } from "../api/post/ApiPOST";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { SlClose } from 'react-icons/sl';
+import { useMutation } from '@tanstack/react-query';
+import { EmailLoginData, axiosIns } from '../api/post/ApiPOST';
+import { useNavigate } from 'react-router-dom';
+import Logo3 from './sources/logo3.png';
+import AppStoreIcon from './sources/appStore.png';
+import GoogleStoreIcon from './sources/googlePlay.png';
 
-export default function Login({
-  className,
-  onClose,
-  maskClosable,
-  closable,
-  visible,
-}) {
-  const [signInData, setSignInData] = useState("");
+export default function Login(props) {
+  const { className, onClose, maskClosable, closable, visible } = props;
+  const [signInData, setSignInData] = useState('');
   const navigate = useNavigate();
 
   const onMaskClick = (e) => {
@@ -34,63 +32,37 @@ export default function Login({
     console.log(signInData);
   };
 
-  const { mutate: emailLogin } = useMutation(EmailLoginData, {});
-  // const { mutate: logInToken } = useMutation(LoginTokenData, {
-  //   onSuccess: (response) => {
-  //     sessionStorage.setItem("access_token", response.header.access_token);
-  //     sessionStorage.setItem("refresh_token", response.headers.refresh_token);
-  //     axiosIns.defaults.headers.common[
-  //       "Access_Token"
-  //     ] = `${response.headers.access_token}`;
-  //     navigate("/main");
-  //   },
-  //   onError: (err) => {
-  //     alert("로그인에 실패했습니다");
-  //   },
-  // });
+  const { mutate: emailLogin } = useMutation(EmailLoginData, {
+    onSuccess: (response) => {
+      navigate('/main');
+    },
+    onError: (err) => {
+      alert('로그인에 실패했습니다');
+    },
+  });
 
   const onSubmitLoginData = () => {
-    // logInToken({ signInData });
     emailLogin({ signInData });
   };
 
   return (
     <>
       <ModalOverlay visible={visible} />
-      <ModalWrapper
-        className={className}
-        onClick={maskClosable ? onMaskClick : null}
-        tabIndex="-1"
-        visible={visible}
-      >
-        <ModalInner
-          tabIndex="0"
-          className="modal-inner"
-          onClick={(e) => e.stopPropagation()}
-        >
+      <ModalWrapper className={className} onClick={maskClosable ? onMaskClick : null} tabIndex="-1" visible={visible}>
+        <ModalInner tabIndex="0" className="modal-inner" onClick={(e) => e.stopPropagation()}>
           {closable && (
             <>
-              <SlClose
-                type="button"
-                className="modal-close"
-                size="auto"
-                color="gray"
-                onClick={onCloseEvent}
-              />
-              <StLogo>logo</StLogo>
+              <SlClose type="button" className="modal-close" size="auto" color="gray" onClick={onCloseEvent} />
+              <StLogoBox>
+                <StLogo src={Logo3}></StLogo>
+              </StLogoBox>
               <StWelCome>계정만들기</StWelCome>
               <StInfo>
-                로그인하면 TTinder 이용약관에 동의하는 것으로 간주됩니다.
-                TTinder의 회원 정보 처리 방식은 개인정보 처리방침 및 쿠키
-                정책에서 확인해 보세요.
+                로그인하면 TTinder 이용약관에 동의하는 것으로 간주됩니다. TTinder의 회원 정보 처리 방식은 개인정보
+                처리방침 및 쿠키 정책에서 확인해 보세요.
               </StInfo>
               <StLoginBox>
-                <StInPutStyle
-                  type="text"
-                  placeholder="이메일"
-                  name="email"
-                  onChange={onChangeHandler}
-                ></StInPutStyle>
+                <StInPutStyle type="text" placeholder="이메일" name="email" onChange={onChangeHandler}></StInPutStyle>
                 <StInPutStyle
                   type="text"
                   placeholder="비밀번호"
@@ -107,8 +79,11 @@ export default function Login({
                 </StButtonStyle>
               </StLoginBox>
               <StHelp>로그인이 안되나요?</StHelp>
-              <StDiv>지금 TINDER 모바일 앱을 설치해 보세요!</StDiv>
-              <StDiv>앱스토어 버튼들 </StDiv>
+              <StDiv>지금 TTINDER 모바일 앱을 설치해 보세요!</StDiv>
+              <DivBox>
+                <AppStoreDiv src={AppStoreIcon}></AppStoreDiv>
+                <GoogleStoreDiv src={GoogleStoreIcon}></GoogleStoreDiv>
+              </DivBox>
             </>
           )}
         </ModalInner>
@@ -150,7 +125,7 @@ const ModalInner = styled.div`
   box-sizing: border-box;
   position: relative;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #fff;
+  background-color: black;
   border-radius: 10px;
   width: 100%;
   max-width: 480px;
@@ -172,8 +147,8 @@ const ModalInner = styled.div`
   }
 `;
 
-const StLogo = styled.div`
-  background-color: red;
+const StLogoBox = styled.div`
+  background-color: transparent;
   box-sizing: border-box;
   width: 100%;
   max-width: 450px;
@@ -181,9 +156,13 @@ const StLogo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const StLogo = styled.img`
+  width: 18px;
+  height: 21px;
 `;
 const StWelCome = styled.div`
-  background-color: orange;
+  background-color: transparent;
   box-sizing: border-box;
   width: 100%;
   max-width: 450px;
@@ -191,9 +170,12 @@ const StWelCome = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-style: italic;
+  font-weight: 900;
+  color: white;
 `;
 const StInfo = styled.div`
-  background-color: yellow;
+  background-color: transparent;
   box-sizing: border-box;
   width: 100%;
   max-width: 450px;
@@ -202,9 +184,10 @@ const StInfo = styled.div`
   justify-content: center;
   align-items: center;
   font-size: medium;
+  color: white;
 `;
 const StHelp = styled.div`
-  background-color: green;
+  background-color: transparent;
   box-sizing: border-box;
   width: 100%;
   max-width: 450px;
@@ -213,6 +196,7 @@ const StHelp = styled.div`
   justify-content: center;
   font-size: medium;
   text-decoration: underline;
+  color: white;
 `;
 
 const StLoginBox = styled.div`
@@ -232,9 +216,16 @@ const StInPutStyle = styled.input`
   max-width: 380px;
   height: 4.5vh;
   text-decoration: none;
-  border: 3px solid gray;
+  border: 3px solid white;
   border-radius: 30px;
   background-color: transparent;
+  color: white;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+  }
   font-size: large;
   display: flex;
   justify-content: center;
@@ -246,17 +237,41 @@ const StButtonStyle = styled.button`
   max-width: 380px;
   height: 4.5vh;
   text-decoration: none;
-  border: 3px solid gray;
+  border: 3px solid white;
   border-radius: 30px;
   background-color: transparent;
+  color: white;
   font-size: x-large;
   cursor: pointer;
   &:hover {
-    background-color: #eceded;
+    background-color: gray;
   }
 `;
 const StDiv = styled.div`
   width: 100%;
   max-width: 450px;
   height: 6vh;
+  font-style: italic;
+  font-weight: 900;
+  color: white;
+`;
+
+const DivBox = styled.div`
+  width: 100%;
+  max-width: 450px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+`;
+const AppStoreDiv = styled.img`
+  width: 156px;
+  height: 49px;
+`;
+
+const GoogleStoreDiv = styled.img`
+  width: 156px;
+  height: 49px;
 `;
