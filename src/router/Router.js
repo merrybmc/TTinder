@@ -1,30 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
-import SignUp from '../pages/SignUp';
+import SignUp from '../pages/signup/SignUp';
 import InformationInput from '../pages/InformationInput';
-import Main from '../pages/Main';
-import Detail from '../pages/Detail';
-import Header from '../components/Header';
-// import Login from '../pages/Login';
-// import Chatting from '../pages/Tabs/Chatting';
-// import Filtering from '../pages/Tabs/Filtering';
+import Main from '../pages/main/main/Main';
+import Detail from '../pages/main/detail/Detail';
 
 export default function Router() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/informationinput' element={<InformationInput />} />
-
-        <Route path='/main' element={<Main />}>
-          {/* <Routes path='/detail' element={<Detail />} /> */}
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/informationinput" element={<InformationInput />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </>
   );
-}
-
-{
-  /* <Route path='/login' element={<Login />} /> */
 }
