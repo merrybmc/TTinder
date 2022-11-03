@@ -71,7 +71,7 @@ export default function Login(props) {
               <StLoginBox>
                 <StInPutStyle type="text" placeholder="이메일" name="email" onChange={onChangeHandler}></StInPutStyle>
                 <StInPutStyle
-                  type="text"
+                  type="password"
                   placeholder="비밀번호"
                   name="password"
                   onChange={onChangeHandler}

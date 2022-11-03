@@ -36,7 +36,7 @@ export default function SignUp_Article() {
   const [SignUpBtn, setSignUpBtn] = useState(0);
 
   // useState 비밀번호 확인 잘못 입력한 경우 에러 출력
-  const [errorPasswordCheck, setErrorPasswordCheck] = useState(1);
+  const [errorPasswordCheck, setErrorPasswordCheck] = useState();
 
   // onChange 이메일 입력
   const onChangeEmail = (event) => {
