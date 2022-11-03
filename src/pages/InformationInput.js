@@ -11,6 +11,7 @@ import personIcon from './sources/personIcon.png';
 import HeaderInfo from './info/HeaderInfo';
 
 export default function InformationInput() {
+
   const navigate = useNavigate();
 
   //모달창 열고 닫기
@@ -240,6 +241,7 @@ export default function InformationInput() {
       </StJoinButtonContainer>
     </>
   );
+
 }
 
 const StInformationContainer = styled.form`

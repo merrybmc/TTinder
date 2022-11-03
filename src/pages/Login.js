@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SlClose } from 'react-icons/sl';
+
 import { useMutation, useQuery } from '@tanstack/react-query';
+
 import { EmailLoginData } from '../api/post/ApiPOST';
 import { useNavigate } from 'react-router-dom';
 
 import Logo3 from './sources/logo3.png';
 import AppStoreIcon from './sources/appStore.png';
 import GoogleStoreIcon from './sources/googlePlay.png';
+
 import { CheckUserInfo } from '../api/get/ApiGET';
+
 
 export default function Login(props) {
   const { className, onClose, maskClosable, closable, visible } = props;
@@ -38,9 +42,11 @@ export default function Login(props) {
     onSuccess: (response) => {
       sessionStorage.setItem('authorization', response.headers.authorization);
       sessionStorage.setItem('refresh_token', response.headers.refresh_token);
+
       {
         response.data.data.info === true ? navigate('/main') : navigate('/informationinput');
       }
+
     },
     onError: (err) => {
       alert('로그인에 실패했습니다');
@@ -59,7 +65,9 @@ export default function Login(props) {
           {closable && (
             <>
 
+
               <SlClose type="button" className="modal-close" color="gray" onClick={onCloseEvent} />
+
 
               <StLogoBox>
                 <StLogo src={Logo3}></StLogo>
@@ -72,7 +80,9 @@ export default function Login(props) {
               <StLoginBox>
                 <StInPutStyle type="text" placeholder="이메일" name="email" onChange={onChangeHandler}></StInPutStyle>
                 <StInPutStyle
+
                   type="text"
+
                   placeholder="비밀번호"
                   name="password"
                   onChange={onChangeHandler}
@@ -101,7 +111,9 @@ export default function Login(props) {
 }
 
 Login.propTypes = {
+
   visible: PropTypes.func,
+
 };
 
 const ModalWrapper = styled.div`
@@ -240,6 +252,7 @@ const StInPutStyle = styled.input`
   align-items: center;
 `;
 
+
 const StButtonStyle = styled.div`
   width: 100%;
   max-width: 380px;
@@ -247,6 +260,7 @@ const StButtonStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   text-decoration: none;
   border: 3px solid white;
   border-radius: 30px;

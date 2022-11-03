@@ -1,15 +1,24 @@
 import axios from 'axios';
-import { useState } from 'react';
+
+import api from '../api';
 
 // 토큰
-const token = sessionStorage.getItem('authorization');
+// const token = sessionStorage.getItem('authorization');
 
 // api 주소 기본 설정
-const api = axios.create({
-  baseURL: 'http://54.180.97.182',
-  headers: { Authorization: token },
+// const api = axios.create({
+//   baseURL: 'http://54.180.97.182',
+//   // headers: { Authorization: token },
+// });
 
-});
+// api.interceptors.request.use((config) => {
+//   const token = sessionStorage.getItem('authorization');
+//   if (token) {
+//     config.headers['Authorization'] = token;
+//   }
+//   return config;
+// });
+
 
 // 이메일 코드 전송
 export async function RequestEmailSend(email) {
@@ -30,11 +39,22 @@ export async function EmailLoginData(EmailData) {
   return data;
 }
 
-//개인정보
+// 로그아웃
+export async function EmailLogoutData() {
+  const data = await api.post('/signout');
+  console.log(data);
+  return data;
+}
+
+// 메세지 보내기
+export async function MsgSend({ id, stateMsgSend }) {
+  const data = await api.post(`/messages/${id}`, stateMsgSend);
+  return data;
+}
+
 
 export async function FormDatas(PersonalData) {
   const { data } = await api.post('/info', PersonalData);
   return data;
 }
 
-export default api;
