@@ -102,7 +102,7 @@ export default function InformationInput() {
 
   //mutate
   const { mutate: postFormData } = useMutation(FormDatas, {
-    onSuccess: () => {
+    onSuccess: (response) => {
       alert('저장완료!');
       navigate('/main');
     },
@@ -157,9 +157,7 @@ export default function InformationInput() {
                     key={index}
                     name="gender"
                     value={element}
-                    isSelected={choiceMan[index]}
                     handleClick={handleClick}
-                    elementIndex={index}
                     onClick={onGenderChangeHandler}
                     style={{ backgroundColor: gender === element ? 'gray' : '' }}
                   >
@@ -226,7 +224,7 @@ export default function InformationInput() {
                   onChange={onPhotoHandler}
                   input
                   type="file"
-                  accept="image/*"
+                  accept="image/png"
                 ></StPictureAdd>
               </StPictureAddVisible>
             </StPictures>
@@ -243,6 +241,7 @@ export default function InformationInput() {
     </>
   );
 }
+
 const StInformationContainer = styled.form`
   display: flex;
   flex-direction: row;
@@ -271,7 +270,7 @@ const StInfoInputContainer = styled.div`
 const StInfoNameBox = styled.div`
   width: 100%;
   max-width: 290px;
-  height: 5vh;
+  height: 6vh;
   background-color: #121418;
   border-radius: 10px;
   display: flex;
