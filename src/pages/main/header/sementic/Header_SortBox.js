@@ -210,6 +210,7 @@ export default function Header_SortBox() {
     <StSortBox>
       <StGenderBox value="20" max="100">
         <p>성별</p>
+
         <StChoiceGender
           gender={gender}
           onClick={() => {
@@ -537,6 +538,7 @@ const StGenderBox = styled.div``;
 const StChoiceGender = styled.button`
   width: 50px;
   margin-right: 5px;
+
   background-color: ${(props) => `${props.gender === '남' ? 'aqua' : 'white'}`};
 `;
 

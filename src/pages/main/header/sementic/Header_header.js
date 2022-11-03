@@ -52,7 +52,9 @@ const HeaderContainer = styled.div`
   height: 87px;
   background-color: #fd5b40;
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
   flex-direction: row;
 `;

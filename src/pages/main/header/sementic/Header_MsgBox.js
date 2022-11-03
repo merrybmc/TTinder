@@ -66,6 +66,7 @@ const MsgBoxMsg = styled.span`
   width: 230px;
   margin-left: 8px;
   text-overflow: ellipsis;
+
   /* overflow: auto; */
   white-space: nowrap;
   word-wrap: break-word;

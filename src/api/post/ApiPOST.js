@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import api from '../api';
 
 // 토큰
@@ -33,7 +34,7 @@ export async function RequestSignUp(UserInfo) {
 
 // 로그인
 export async function EmailLoginData(EmailData) {
-  const data = await axios.post('http://54.180.97.182/signin', EmailData);
+  const data = await api.post('/signin', EmailData);
   console.log(data);
   return data;
 }
@@ -48,5 +49,10 @@ export async function EmailLogoutData() {
 // 메세지 보내기
 export async function MsgSend({ id, stateMsgSend }) {
   const data = await api.post(`/messages/${id}`, stateMsgSend);
+  return data;
+}
+
+export async function FormDatas(PersonalData) {
+  const { data } = await api.post('/info', PersonalData);
   return data;
 }
