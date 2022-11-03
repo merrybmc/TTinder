@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import api from '../api';
 
 // 토큰
@@ -18,6 +19,7 @@ import api from '../api';
 //   return config;
 // });
 
+
 // 이메일 코드 전송
 export async function RequestEmailSend(email) {
   const { data } = await axios.post('http://54.180.97.182/emailConfirm', email);
@@ -33,8 +35,7 @@ export async function RequestSignUp(UserInfo) {
 
 // 로그인
 export async function EmailLoginData(EmailData) {
-  const data = await axios.post('http://54.180.97.182/signin', EmailData);
-  console.log(data);
+  const data = await api.post('/signin', EmailData);
   return data;
 }
 
@@ -50,3 +51,10 @@ export async function MsgSend({ id, stateMsgSend }) {
   const data = await api.post(`/messages/${id}`, stateMsgSend);
   return data;
 }
+
+
+export async function FormDatas(PersonalData) {
+  const { data } = await api.post('/info', PersonalData);
+  return data;
+}
+

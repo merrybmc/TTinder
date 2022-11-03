@@ -5,6 +5,7 @@ import InformationInput from '../pages/InformationInput';
 import Main from '../pages/main/main/Main';
 import Detail from '../pages/main/detail/Detail';
 
+
 export default function Router() {
   return (
     <>
@@ -12,8 +13,10 @@ export default function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/informationinput" element={<InformationInput />} />
+
         <Route path="/main" element={<Main />} />
         <Route path="/detail/:id" element={<Detail />} />
+
       </Routes>
     </>
   );

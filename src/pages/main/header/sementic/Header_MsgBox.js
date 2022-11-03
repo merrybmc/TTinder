@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { ReadMsg } from '../../../../api/get/ApiGET';
 import { MsgSend } from '../../../../api/post/ApiPOST';
@@ -24,6 +25,7 @@ export default function Header_MsgBox() {
             </MsgBox>
           );
         })}
+
     </MsgContainer>
   );
 }
@@ -66,6 +68,7 @@ const MsgBoxMsg = styled.span`
   width: 230px;
   margin-left: 8px;
   text-overflow: ellipsis;
+
   /* overflow: auto; */
   white-space: nowrap;
   word-wrap: break-word;
@@ -96,3 +99,4 @@ const MsgBoxMsg = styled.span`
         <StProfileName>페페</StProfileName>
         <MsgBoxMsg>ㅠㅠ흐궇흐규ㅜㅜ흑ㅎ규ㅜㄱ흑커헉ㅋㅠ퓨ㅠ</MsgBoxMsg>
       </MsgBox> */
+

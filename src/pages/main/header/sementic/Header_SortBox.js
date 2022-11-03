@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { useState } from 'react';
 import { sortInfo } from '../../../../Store/store';
 import { useRecoilState } from 'recoil';
@@ -206,10 +207,12 @@ export default function Header_SortBox() {
     console.log(headerSortInfo);
   };
 
+
   return (
     <StSortBox>
       <StGenderBox value="20" max="100">
         <p>성별</p>
+
         <StChoiceGender
           gender={gender}
           onClick={() => {
@@ -524,6 +527,7 @@ export default function Header_SortBox() {
       >
         정렬취소
       </Btns>
+
     </StSortBox>
   );
 }
@@ -537,6 +541,7 @@ const StGenderBox = styled.div``;
 const StChoiceGender = styled.button`
   width: 50px;
   margin-right: 5px;
+
   background-color: ${(props) => `${props.gender === '남' ? 'aqua' : 'white'}`};
 `;
 
@@ -544,12 +549,14 @@ const StChoiceGender2 = styled.button`
   width: 50px;
   margin-right: 5px;
   background-color: ${(props) => `${props.gender === '여' ? 'aqua' : 'white'}`};
+
 `;
 
 const StAgeBox = styled.div``;
 const StAgeBar = styled.input`
   width: 40px;
 `;
+
 
 const LocationList = styled.div`
   width: 100%;
@@ -893,3 +900,4 @@ const MBTI16 = styled.button`
 const Btns = styled.button`
   margin-right: 20px;
 `;
+

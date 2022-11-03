@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { EmailLogoutData } from '../../../../api/post/ApiPOST';
 import { useNavigate } from 'react-router-dom';
@@ -43,6 +44,7 @@ export default function Header_Header() {
       >
         로그아웃
       </StLogout>
+
     </HeaderContainer>
   );
 }
@@ -52,7 +54,9 @@ const HeaderContainer = styled.div`
   height: 87px;
   background-color: #fd5b40;
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
   flex-direction: row;
 `;
@@ -77,6 +81,7 @@ const StProfileName = styled.p`
   font-weight: bold;
 `;
 
+
 const StLogout = styled.button`
   margin-right: 20px;
   border: 1px solid #ccd0d4;
@@ -90,3 +95,4 @@ const StLogout = styled.button`
     background-color: #b4b9bf;
   }
 `;
+

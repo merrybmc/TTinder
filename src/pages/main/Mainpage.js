@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import { ReadUserData, ReadSortData } from '../../api/get/ApiGET';
 import { useNavigate } from 'react-router-dom';
@@ -119,6 +119,7 @@ export default function Mainpage() {
         </MainContainer>
       )}
     </>
+
   );
 }
 
@@ -142,10 +143,12 @@ const UserInfoBox = styled.div`
 `;
 
 const UserImg = styled.img`
+
   width: 100%;
   height: 100%;
   position: absolute;
   object-fit: cover;
+
 `;
 
 const IsConnect = styled.div`
@@ -184,6 +187,7 @@ const UserProfileAge = styled.span`
   margin-left: 10px;
 `;
 
+
 /* <UserInfoBox>
         <UserImg src="https://pbs.twimg.com/media/EbSKBtIUMAA47Eq.jpg" />
         <UserProfile>
@@ -199,3 +203,4 @@ const UserProfileAge = styled.span`
           <UserProfileAge>36</UserProfileAge>
         </UserProfile>
       </UserInfoBox> */
+
