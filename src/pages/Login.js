@@ -5,6 +5,7 @@ import { SlClose } from 'react-icons/sl';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { EmailLoginData } from '../api/post/ApiPOST';
 import { useNavigate } from 'react-router-dom';
+
 import Logo3 from './sources/logo3.png';
 import AppStoreIcon from './sources/appStore.png';
 import GoogleStoreIcon from './sources/googlePlay.png';
@@ -57,7 +58,9 @@ export default function Login(props) {
         <ModalInner tabIndex="0" className="modal-inner" onClick={(e) => e.stopPropagation()}>
           {closable && (
             <>
+
               <SlClose type="button" className="modal-close" color="gray" onClick={onCloseEvent} />
+
               <StLogoBox>
                 <StLogo src={Logo3}></StLogo>
               </StLogoBox>
