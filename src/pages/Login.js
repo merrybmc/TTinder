@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SlClose } from 'react-icons/sl';
 import { useMutation } from '@tanstack/react-query';
-import { EmailLoginData } from '../api/post/ApiPOST';
+import { EmailLoginData, axiosIns } from '../api/post/ApiPOST';
 import { useNavigate } from 'react-router-dom';
 
 import Logo3 from './sources/logo3.png';
@@ -35,8 +35,6 @@ export default function Login(props) {
 
   const { mutate: emailLogin } = useMutation(EmailLoginData, {
     onSuccess: (response) => {
-      sessionStorage.setItem('authorization', response.headers.authorization);
-      sessionStorage.setItem('refresh_token', response.headers.refresh_token);
       navigate('/main');
     },
     onError: (err) => {
@@ -45,7 +43,7 @@ export default function Login(props) {
   });
 
   const onSubmitLoginData = () => {
-    emailLogin(signInData);
+    emailLogin({ signInData });
   };
 
   return (
@@ -68,7 +66,7 @@ export default function Login(props) {
               <StLoginBox>
                 <StInPutStyle type="text" placeholder="이메일" name="email" onChange={onChangeHandler}></StInPutStyle>
                 <StInPutStyle
-                  type="password"
+                  type="text"
                   placeholder="비밀번호"
                   name="password"
                   onChange={onChangeHandler}
